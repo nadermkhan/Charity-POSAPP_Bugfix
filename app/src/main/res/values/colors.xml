@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FFFF1493</color>
+    <color name="input_background">#FFdee2e6</color>
+
+    <color name="pink_200">#FFFF1493</color>
+    <color name="pink_700">#FFFF1493</color>
+    <color name="teal_200">#FFFF1493</color>
+    <color name="teal_700">#FFFF1493</color>
+    <color name="black">#FF000000</color>
+    <color name="gray">#9A9A9A</color>
+    <color name="white">#FFFFFFFF</color>
+
+</resources>

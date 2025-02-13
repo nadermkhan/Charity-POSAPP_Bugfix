@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:id="@+id/main"
+tools:context=".activities.AddSellPaymentDetailsActivity">
+
+<ProgressBar
+    android:id="@+id/pb_payment_activity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<LinearLayout
+    android:id="@+id/lly_cart_summery_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:background="@color/white">
+
+</LinearLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/lly_payment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/primary"
+            android:padding="10dp"
+            android:text="Payment Info"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_payment_card_number_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/auto_customer_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="numberSigned"
+                android:padding="12dp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_payment_card_owner_name_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_payment_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_payment_card_expire_date_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_payment_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:inputType="textMultiLine"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_shpping_80"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/et_payment_shiping_charge"
+                app:layout_constraintBottom_toBottomOf="@id/et_payment_shiping_charge"
+                android:padding="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/pink_200"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_shpping_150"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150"
+                app:layout_constraintRight_toLeftOf="@id/tv_shpping_80"
+                app:layout_constraintTop_toTopOf="@id/et_payment_shiping_charge"
+                app:layout_constraintBottom_toBottomOf="@id/et_payment_shiping_charge"
+                android:padding="8dp"
+                android:layout_margin="4dp"
+                android:background="@color/pink_200"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_payment_shiping_charge"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_shpping_150"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_payment_shipping_charge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Shipping Charge"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_advance_500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/et_payment_advance_holder"
+                app:layout_constraintBottom_toBottomOf="@id/et_payment_advance_holder"
+                android:padding="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/primary"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_advance_200"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150"
+                app:layout_constraintRight_toLeftOf="@id/tv_advance_500"
+                app:layout_constraintTop_toTopOf="@id/et_payment_advance_holder"
+                app:layout_constraintBottom_toBottomOf="@id/et_payment_advance_holder"
+                android:padding="8dp"
+                android:layout_margin="4dp"
+                android:background="@color/pink_200"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_payment_advance_holder"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_advance_200"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_payment_advance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Advance Amount"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_payment_account_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/et_payment_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Account"
+                android:inputType="textPersonName"
+                android:padding="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_payment_note_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_payment_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Note"
+                android:inputType="textMultiLine" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/other_expense_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="12dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_payment_exp1_key"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Exp name"
+                        android:inputType="textPersonName" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="12dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_payment_exp1_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Exp value"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spn_discount_type"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="50dp"
+                    android:entries="@array/discount_type"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="12dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_payment_exp2_key"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Exp name"
+                        android:inputType="textPersonName" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="12dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_payment_exp2_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Exp Value"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_payment_discount_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:visibility="gone"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_payment_discount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Payment Discount"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_cart_total_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cart Total Discount"
+                    android:enabled="false"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_payment_total_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Invoice Discount"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:enabled="false"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lv_carts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cart items"
+                android:inputType="textMultiLine"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_location_business"
+            android:layout_width="wrap_content"
+            android:minHeight="30dp"
+            android:text="Girsl On Top"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="12dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spn_pathao_store_location"
+            android:layout_width="match_parent"
+            android:minHeight="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+        </androidx.appcompat.widget.AppCompatSpinner>
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/et_payment_district_holder"-->
+        <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginLeft="12dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:layout_marginRight="12dp"-->
+        <!--                >-->
+
+        <!--                <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+        <!--                    android:id="@+id/et_payment_district"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:hint="DISTRICT"-->
+        <!--                    android:inputType="textPersonName"-->
+        <!--                    android:padding="12dp" />-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/et_payment_zone_holder"-->
+        <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginLeft="12dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:layout_marginRight="12dp"-->
+        <!--                >-->
+
+        <!--                <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+        <!--                    android:id="@+id/et_zone"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:hint="Zone"-->
+        <!--                    android:inputType="textPersonName"-->
+        <!--                    android:padding="12dp" />-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/et_payment_area_holder"-->
+        <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginLeft="12dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:layout_marginRight="12dp"-->
+        <!--                >-->
+
+        <!--                <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+        <!--                    android:id="@+id/et_payment_sub_district"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:hint="Area"-->
+        <!--                    android:inputType="textPersonName"-->
+        <!--                    android:padding="12dp" />-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner_district_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/spinner_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select City"
+                android:inputType="textPersonName"
+                android:padding="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner_zone_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/spinner_zone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Zone"
+                android:inputType="textPersonName"
+                android:padding="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner_area_holder"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/spinner_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Area"
+                android:inputType="textPersonName"
+                android:padding="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <LinearLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Due : " />
+
+            <TextView
+                android:id="@+id/tota_due"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12000.0" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp">
+
+            <CheckBox
+                android:id="@+id/cb_print_recit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:checked="false"
+                android:text="Print " />
+
+            <Button
+                android:id="@+id/btnPaymentConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="CONFIRM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

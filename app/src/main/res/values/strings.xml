@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Girst On Top</string>
+    <string-array name="discount_type">
+        <item>Discount type</item>
+        <item>Fixed</item>
+        <item>Percentage</item>
+    </string-array>
+
+
+    <string-array name="shipping_status_options">
+        <item>ordered</item>
+        <item>packed</item>
+        <item>shipped</item>
+        <item>delivered</item>
+        <item>cancelled</item>
+        <item>exchange_pe</item>
+        <item>returned_pe</item>
+        <item>refund_pe</item>
+        <item>complete_exchange</item>
+        <item>complete_return_refund</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Dropdown menu for shipping status -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Status" />
+    <Spinner
+        android:id="@+id/spinnerShippingStatus"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/etStatusNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter note (optional)"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="16dp" />
+    <!-- Apply button -->
+
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:text="Apply" />
+</LinearLayout>
