@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -93,7 +94,7 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
     List<OrderProduct> orderproducts = new ArrayList<>();
     List<OrderPayment> orderPayments = new ArrayList<>();
     private TextView tvDue, tvDisplayOtherExpance,tv_shpping_150,tv_shpping_80,tv_advance_500,tv_advance_200;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -276,6 +277,40 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
             tvLocationBusiness.setText(businessName);
             calculation();
         }
+        loadInputFromSharedPreferences();
+    }
+
+    private void saveInputToSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SellPaymentDetails", MODE_PRIVATE);
+        Editor editor = sharedPreferences.edit();
+        editor.putString("phoneNumber", tvAutoPhone.getText().toString());
+        editor.putString("name", etName.getText().toString());
+        editor.putString("address", etAddress.getText().toString());
+        editor.putString("notes", etNotes.getText().toString());
+        editor.putString("shippingCharge", etShippingCharge.getText().toString());
+        editor.putString("advanceAmount", etAdvanceAmount.getText().toString());
+        editor.putString("discount", etDiscount.getText().toString());
+        editor.putString("totalDiscount", etTotalDiscount.getText().toString());
+        editor.apply();
+    }
+
+    private void loadInputFromSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SellPaymentDetails", MODE_PRIVATE);
+        tvAutoPhone.setText(sharedPreferences.getString("phoneNumber", ""));
+        etName.setText(sharedPreferences.getString("name", ""));
+        etAddress.setText(sharedPreferences.getString("address", ""));
+        etNotes.setText(sharedPreferences.getString("notes", ""));
+        etShippingCharge.setText(sharedPreferences.getString("shippingCharge", ""));
+        etAdvanceAmount.setText(sharedPreferences.getString("advanceAmount", ""));
+        etDiscount.setText(sharedPreferences.getString("discount", ""));
+        etTotalDiscount.setText(sharedPreferences.getString("totalDiscount", ""));
+    }
+
+    private void clearSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SellPaymentDetails", MODE_PRIVATE);
+        Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
     }
 
     private void calculation(){
@@ -503,6 +538,28 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
             }
             Toast.makeText(this, "Order Placed", Toast.LENGTH_SHORT).show();
         });
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                saveInputToSharedPreferences();
+            }
+        };
+
+        tvAutoPhone.addTextChangedListener(textWatcher);
+        etName.addTextChangedListener(textWatcher);
+        etAddress.addTextChangedListener(textWatcher);
+        etNotes.addTextChangedListener(textWatcher);
+        etShippingCharge.addTextChangedListener(textWatcher);
+        etAdvanceAmount.addTextChangedListener(textWatcher);
+        etDiscount.addTextChangedListener(textWatcher);
+        etTotalDiscount.addTextChangedListener(textWatcher);
     }
 
     private void createcontact(String phoneNumber,String name,String address){
@@ -629,7 +686,7 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
                                 startActivity(dashboardIntent);
                             }
                         }
-
+                        clearSharedPreferences();
                     } else {
                         Log.d("OrderResponse Error", "Code: " + response.code() + ", Message: " + response.message());
                         if (response.errorBody() != null) {
@@ -788,46 +845,6 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
         });
     }
 
-//    private void fetchCities(String accessToken) {
-//        ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
-//        Call<CityResponse> cityCall = apiService.getCities("Bearer " + accessToken);
-//
-//        cityCall.enqueue(new Callback<>() {
-//            @Override
-//            public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    List<CityResponse.City> cities = response.body().getData().getData();
-//                    List<String> cityNames = new ArrayList<>();
-//                    for (CityResponse.City city : cities) {
-//                        cityNames.add(city.getCityName());
-//                    }
-//                    ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(AddSellPaymentDetailsActivity.this, android.R.layout.simple_spinner_dropdown_item, cityNames);
-//                    spnCity.setAdapter(cityAdapter);
-//
-//                    spnCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                        @Override
-//                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                            selectedCityId = String.valueOf(cities.get(position).getCityId());
-//                            city_name = cities.get(position).getCityName();
-//                            et_hierarchy.setText(city_name+"->"+zone_name+"->"+area_name);
-//                            fetchZones(accessToken);
-//                        }
-//
-//                        @Override
-//                        public void onNothingSelected(AdapterView<?> parent) {}
-//                    });
-//                } else {
-//                    Log.e("City Response Error", response.message());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<CityResponse> call, Throwable t) {
-//                Log.e("City Failure", t.getMessage());
-//            }
-//        });
-//    }
-
 
     private void fetchCities(String accessToken) {
         ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
@@ -845,23 +862,6 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
                     }
 
                     runOnUiThread(() -> setUpAutoCompleteCity(cityData));
-
-
-
-
-
-//                    spnCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                        @Override
-//                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                            selectedCityId = String.valueOf(cities.get(position).getCityId());
-//                            city_name = cities.get(position).getCityName();
-//                            et_hierarchy.setText(city_name + "->" + zone_name + "->" + area_name);
-//                            fetchZones(accessToken);
-//                        }
-//
-//                        @Override
-//                        public void onNothingSelected(AdapterView<?> parent) {}
-//                    });
                 } else {
                     Log.e("City Response Error", response.message());
                 }
@@ -873,15 +873,6 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void setUpAutoCompleteCity(List<String> cityNames) {
-//            ArrayAdapter<String> adapter = new ArrayAdapter<>(
-//                    this,
-//                    android.R.layout.simple_dropdown_item_1line,
-//                    cityNames
-//            );
-//            spnCity.setAdapter(adapter);
-//    }
 
     // Set up MaterialAutoCompleteTextView Adapter
     private void setUpAutoCompleteCity(List<CityResponse.City> cities) {
