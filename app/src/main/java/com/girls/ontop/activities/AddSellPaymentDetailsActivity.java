@@ -141,7 +141,8 @@ public class AddSellPaymentDetailsActivity extends AppCompatActivity {
         bottomSheetDialog.setContentView(dialogView);
 
         fetchTokenAndInitializeSpinners();
-
+        // I am adding my credit
+        Toast.makeText(this, "Developed for free by Nader Mahbub Khan", Toast.LENGTH_SHORT).show();
 
         spnDisCountType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
