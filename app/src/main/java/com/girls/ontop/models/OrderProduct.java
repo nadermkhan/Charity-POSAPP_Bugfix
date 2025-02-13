@@ -26,7 +26,7 @@ public class OrderProduct {
     }
 
     public int getProduct_id() {
-        return product_id;
+        return this.product_id;
     }
 
     public void setProduct_id(int product_id) {
@@ -34,7 +34,7 @@ public class OrderProduct {
     }
 
     public double getQuantity() {
-        return quantity;
+        return this.quantity;
     }
 
     public void setQuantity(double quantity) {

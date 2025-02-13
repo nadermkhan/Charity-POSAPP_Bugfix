@@ -204,7 +204,7 @@ public class AddSellActivity extends AppCompatActivity {
 
         tvSearchProducts.setOnItemClickListener((parent, view, position, id) -> {
             String selectedProductWithSize = newProductsList.get(position);
-            Log.d("Selected Product with size", selectedProductWithSize);
+            Log.d("AddSellActivity Selected Product with size", selectedProductWithSize);
 
             for (Product product : aryListOfAllProducts) {
                 for (ProductVariation productVariation : product.getProduct_variations()) {
